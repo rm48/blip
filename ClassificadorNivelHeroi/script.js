@@ -46,7 +46,7 @@ function playGame() {
             else if (xp > 10000)
                 nivel = "Radiante"
 
-            console.log("\nO Herói de nome " + nomeHeroi + " está no nível de " + nivel)
+            console.log(`\nO Herói de nome ${nomeHeroi} está no nível de ${nivel}.`)
             rl.close()
         }
     })

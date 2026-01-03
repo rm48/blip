@@ -35,6 +35,26 @@ Ao final deve se exibir uma mensagem:
 "O Herói de nome **{nome}** está no nível de **{nivel}**"
 
  
+```
+node ./script.js
+Olá herói! Qual o seu nome? 
+
+Anônimo, você tem 0 de XP e está no nível de Ferro. 
+        Você quer lutar para obter mais XP? 
+Enter = Sim
+n + Enter = Não
  
+lutando...
+Você tem 500 de XP
+Continuar lutando?
  
-Bons estudos 😉
+lutando...
+Você tem 1000 de XP
+Continuar lutando?
+ 
+lutando...
+Você tem 1500 de XP
+Continuar lutando?
+n
+
+O Herói de nome Anônimo está no nível de Bronze.
