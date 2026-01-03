@@ -11,7 +11,7 @@ let nomeHeroi = "Anônimo"
 rl.question(`Olá herói! Qual o seu nome? `, string => {
     if (string !== "") nomeHeroi = string
     rl.question(`\n${nomeHeroi}, você tem ${xp} de XP e está no nível de ${nivel}. 
-        Você quer lutar para obter mais XP? \nEnter = Sim\nn + Enter = Não\n`, function (resposta) {
+        Você quer lutar para obter mais XP? \nSim -> Enter\nNão -> n + Enter\n`, function (resposta) {
         if (resposta !== "n")
             playGame()
         else {

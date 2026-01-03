@@ -34,7 +34,7 @@ Se XP for maior ou igual a 10.001 = Radiante
 Ao final deve se exibir uma mensagem:
 "O Herói de nome **{nome}** está no nível de **{nivel}**"
 
- 
+- Versão 1 
 ```
 node ./script.js
 Olá herói! Qual o seu nome? 
@@ -58,3 +58,33 @@ Continuar lutando?
 n
 
 O Herói de nome Anônimo está no nível de Bronze.
+```
+- Versão 2
+```
+node ./script2.js
+Olá herói! Qual o seu nome? Malone
+
+Malone, você tem 3 vidas e 0 de XP (nível de Ferro). 
+        Você pode obter mais XP no par ou impar
+
+        Escolher par   -> 0, 2 ou 4
+        Escolher Impar -> 1, 3 ou 5
+        Qualquer outra tecla para encerrar.
+
+Escolha -> 1
+Escolhi 2. Você venceu! XP: 500
+
+Escolha -> 2
+Escolhi 1. Você perdeu! Vidas: 2
+
+Escolha -> 1
+Escolhi 1. Você perdeu! Vidas: 1
+
+Escolha -> 0
+Escolhi 3. Você perdeu! Vidas: 0
+
+Vitórias: 1
+Derrotas: 3
+XP: 500
+
+O Herói de nome Malone está no nível de Ferro.
