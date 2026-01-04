@@ -5,23 +5,29 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-let xp = 0
 let nivel = "Ferro"
 let heroi = "Anônimo"
 let vitorias = 0;
 let derrotas = 0;
-let vidas = 3
+let vidas = 10
+let seguidas = 1
 
 rl.question(`Olá herói! Qual o seu nome? `, string => {
     if (string !== "") heroi = string
-    console.log(`\n${heroi}, você tem ${vidas} vidas e ${xp} de XP (nível de ${nivel}). 
-        Você pode obter mais XP no par ou impar\n
+    console.log(`\n${heroi}, você tem ${vidas} vidas e está no nível de ${nivel}. 
+        Você pode subir de nível no par ou impar\n
         Escolher par   -> 0, 2 ou 4
         Escolher Impar -> 1, 3 ou 5
         Qualquer outra tecla para encerrar.`)
     // Inicia o jogo
     playGame()
 })
+
+function CalcularRanking(vitorias, derrotas) {
+    saldo = vitorias - derrotas
+    return saldo
+
+}
 
 function playGame() {
     rl.question(`\nEscolha -> `, function (string) {
@@ -35,40 +41,47 @@ function playGame() {
 
             if (vitoriaHeroi) {
                 vitorias++
-                xp += 500
-                console.log(`Escolhi ${adversario}. Você venceu! XP: ${xp}`)
+                seguidas++
+                console.log(`Escolhi ${adversario}. Você venceu! Vitórias: ${vitorias}`)
+                if(seguidas%4==0){
+                    console.log("3 seguidas! Multiplicando vidas e vitorias por 2!")
+                    vitorias*=2
+                    vidas*=2
+                }
+                
             } else {
-                derrotas++;
+                derrotas++
+                seguidas = 1
                 vidas--
                 console.log(`Escolhi ${adversario}. Você perdeu! Vidas: ${vidas}`);
             }
-              
+
             if (vidas)
                 // Chama a função novamente para continuar o loop
                 playGame()
             else {
-                
-                if (xp < 1000)
+
+                saldoVitorias = CalcularRanking(vitorias, derrotas)
+
+                if (saldoVitorias <= 10) {
                     nivel = "Ferro"
-                else if (xp > 1000 && xp <= 2000)
+                } else if (saldoVitorias > 10 && saldoVitorias <= 20) {
                     nivel = "Bronze"
-                else if (xp > 2000 && xp <= 5000)
+                } else if (saldoVitorias > 20 && saldoVitorias <= 50) {
                     nivel = "Prata"
-                else if (xp > 5000 && xp <= 7000)
+                } else if (saldoVitorias > 50 && saldoVitorias <= 80) {
                     nivel = "Ouro"
-                else if (xp > 7000 && xp <= 8000)
-                    nivel = "Platina"
-                else if (xp > 8000 && xp <= 9000)
-                    nivel = "Ascendente"
-                else if (xp > 9000 && xp <= 10000)
+                } else if (saldoVitorias > 80 && saldoVitorias <= 90) {
+                    nivel = "Diamante"
+                } else if (saldoVitorias > 90 && saldoVitorias <= 100) {
+                    nivel = "Lendário"
+                } else {
                     nivel = "Imortal"
-                else if (xp > 10000)
-                    nivel = "Radiante"
+                }
 
                 console.log(`\nVitórias: ${vitorias}`);
                 console.log(`Derrotas: ${derrotas}`);
-                console.log(`XP: ${xp}`);
-                console.log(`\nO Herói de nome ${heroi} está no nível de ${nivel}.`)
+                console.log(`O Herói tem saldo de ${saldoVitorias} vitórias e está no nível de ${nivel}`)
                 rl.close()
             }
         }
