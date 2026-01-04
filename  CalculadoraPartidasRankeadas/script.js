@@ -1,5 +1,3 @@
-let nivel = "Ferro"
-
 function CalcularRanking(vitorias, derrotas) {
     saldo = vitorias - derrotas
     return saldo
